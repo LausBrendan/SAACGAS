@@ -4,3 +4,7 @@ This is an OSU senior capstone project. The acronym stands for: Securing Agent-t
 AWS Account ID: 685368365444
 
 IAM URL: https://685368365444.signin.aws.amazon.com/console
+
+To view dev:
+- From ./SAACGAS/app/client, execute: "npm install" then "npm start"
+- From ./SAACGAS/app/server, execute: "node index.js"
