@@ -21,7 +21,7 @@ export default function Navbar() {
             fontWeight: "bold",
           }}
         >
-          SAACGAS
+          SAACGAIS
         </Typography>
 
         <Box>
