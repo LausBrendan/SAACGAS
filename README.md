@@ -8,4 +8,4 @@ IAM URL: https://685368365444.signin.aws.amazon.com/console
 
 To view dev:
 - From ./SAACGAS/app/client, execute: "npm install" then "npm start"
-- From ./SAACGAS/app/server, execute: "node index.js"
+- From ./SAACGAS/app/server, execute: "npm start"
