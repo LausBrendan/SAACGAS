@@ -45,23 +45,13 @@ jobs:
 
   server:
     runs-on: ubuntu-latest
-    services:
-      mariadb:
-        image: mariadb:10.11
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: testdb
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -ppassword" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=3
     env:
-      DB_HOST: 127.0.0.1
+      DB_HOST: localhost
       DB_PORT: 3306
       DB_USER: root
       DB_PASS: password
       DB_NAME: testdb
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -79,14 +69,6 @@ jobs:
         working-directory: app/server
         run: npm run lint
 
-      - name: Wait for MariaDB
-        run: |
-          for i in {1..30}; do
-            mysqladmin ping -h $DB_HOST -P $DB_PORT -u $DB_USER -p$DB_PASS > /dev/null 2>&1 && break
-            echo "Waiting for MariaDB..."
-            sleep 2
-          done
-
-      - name: Test
+      - name: Unit Tests (mocked DB)
         working-directory: app/server
         run: npm test -- --ci --detectOpenHandles
