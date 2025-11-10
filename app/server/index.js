@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import testRoutes from './routes/test.js';
+import testRoutes from './routes/_test.js';
 import bedrockRoute from './routes/aiAgent.js';
 
 const app = express();
